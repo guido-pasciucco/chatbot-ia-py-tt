@@ -1,7 +1,8 @@
+# Talento Tech Teens
+# Curso - Inteligencia Artifical con Python
+
 import streamlit as st
 from groq import Groq
-
-
 
 def configurar_pagina():
     st.title("Mi chat de IA")
@@ -23,8 +24,6 @@ MODELOS = [
     'mixtral-8x7b-32768'
 ]
 
-# 3. espacio en la interfaz
-
 def area_chat():
     contenedorDelChat = st.container(height=400, border=True)
     with contenedorDelChat:
@@ -39,7 +38,6 @@ def configurar_modelo(cliente, modelo, mensajeDeEntrada):
 
 mensajes = []
 
-# 1. actualizar historial
 def actualizar_historial(rol, contenido, avatar):
     st.session_state.mensajes.append({
         "role": rol,
@@ -47,14 +45,11 @@ def actualizar_historial(rol, contenido, avatar):
         "avatar": avatar
     })
 
-# 2. mostrar historial 
 def mostrar_historial():
-    for mensaje in st.session_state.mensajes: # bucle
-        with st.chat_message(mensaje["role"]): # burbuja
-            st.markdown(mensaje["content"]) # texto
+    for mensaje in st.session_state.mensajes: 
+        with st.chat_message(mensaje["role"]): 
+            st.markdown(mensaje["content"]) 
 
-
-# clase 9 - detalles finales para nuestro chatbot
 def generar_respuesta(chat_completo):
     respuesta_completa = "" 
     for frase in chat_completo:
@@ -78,7 +73,3 @@ def main():
         st.rerun()
 
 if __name__ == "__main__": main()
-
-
-
-
